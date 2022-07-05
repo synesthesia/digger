@@ -5,11 +5,15 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7EA2F615-09C5-4511-A367-0E514D1628C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digger", "src\digger\digger.csproj", "{321D9938-B8A8-4DD2-BC25-B2CA5C371C7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digger", "src\Digger\Digger.csproj", "{321D9938-B8A8-4DD2-BC25-B2CA5C371C7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E0518130-DEFA-4EE5-AE5D-8D8DA4E65AF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "digger.tests", "tests\digger.tests\digger.tests.csproj", "{D6E82F68-EA3D-4148-954A-B9385ECD8835}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digger.Tests", "tests\Digger.Tests\Digger.Tests.csproj", "{D6E82F68-EA3D-4148-954A-B9385ECD8835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiigoSharp.Tests", "tests\DiigoSharp.Tests\DiigoSharp.Tests.csproj", "{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiigoSharp.ApiClient", "src\DiigoSharp.ApiClient\DiigoSharp.ApiClient.csproj", "{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,9 +32,19 @@ Global
 		{D6E82F68-EA3D-4148-954A-B9385ECD8835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E82F68-EA3D-4148-954A-B9385ECD8835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E82F68-EA3D-4148-954A-B9385ECD8835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{321D9938-B8A8-4DD2-BC25-B2CA5C371C7B} = {7EA2F615-09C5-4511-A367-0E514D1628C3}
 		{D6E82F68-EA3D-4148-954A-B9385ECD8835} = {E0518130-DEFA-4EE5-AE5D-8D8DA4E65AF7}
+		{4EB14CA2-33FC-46B5-9262-DEDB76AB5BFA} = {E0518130-DEFA-4EE5-AE5D-8D8DA4E65AF7}
+		{10D28C10-A9A4-4B1B-BBF6-76D008AA7C47} = {7EA2F615-09C5-4511-A367-0E514D1628C3}
 	EndGlobalSection
 EndGlobal
