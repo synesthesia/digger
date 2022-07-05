@@ -5,6 +5,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.0.1</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <PackageId>digger</PackageId>
+    <ToolCommandName>digger</ToolCommandName>
+    
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
