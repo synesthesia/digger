@@ -12,7 +12,7 @@
     <PackageId>digger</PackageId>
     <ToolCommandName>digger</ToolCommandName>
     
-    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <PackageOutputPath>../../nupkg</PackageOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -20,7 +20,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="LICENSE" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>  
 
 </Project>

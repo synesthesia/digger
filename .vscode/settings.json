@@ -1,5 +1,8 @@
 {
     "conventionalCommits.scopes": [
         "tools"
-    ]
+    ],
+    "dotnet-test-explorer.testProjectPath": "tests/**/*.csproj",
+
+
 }
