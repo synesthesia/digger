@@ -1,0 +1,13 @@
+{
+  "name": "digger",
+  "version": "0.0.1",
+  "description": "A tool to pull highlights from Diigo",
+  "main": "index.js",
+  "author": "Julian Elve <julian@elve.london>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1"
+  }
+}
