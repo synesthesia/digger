@@ -1,18 +1,21 @@
 ﻿using Ardalis.GuardClauses;
 using DiigoSharp.ApiClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using DiigoSharp.ApiClient.Configuration;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDiigoClient(this IServiceCollection services, string apiKey, string userName, string password)
+        public static IServiceCollection AddDiigoClient(this IServiceCollection services)
         {
+            var sp = services.BuildServiceProvider();
+            var options = sp.GetRequiredService<IOptions<DiigoOptions>>().Value;
+            var apiKey = options.ApiKey;
+            var userName = options.UserName;
+            var password = options.Password;
+
             Guard.Against.Null(services, nameof(services));
             Guard.Against.NullOrEmpty(apiKey, nameof(apiKey));
             Guard.Against.NullOrEmpty(userName, nameof(userName));

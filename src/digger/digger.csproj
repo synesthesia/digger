@@ -6,12 +6,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>0.0.2</Version>
+    <UserSecretsId>e769067e-c9d9-4d12-bde2-ed15c66846a2</UserSecretsId>
   </PropertyGroup>
+
   <PropertyGroup>
     <PackAsTool>true</PackAsTool>
     <PackageId>digger</PackageId>
     <ToolCommandName>digger</ToolCommandName>
-    
     <PackageOutputPath>../../nupkg</PackageOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -19,11 +20,21 @@
   <PropertyGroup>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-  </ItemGroup>  
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiigoSharp.ApiClient\DiigoSharp.ApiClient.csproj" />
+  </ItemGroup>
 
 </Project>

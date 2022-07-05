@@ -1,6 +1,10 @@
 {
     "recommendations": [
         "vivaxy.vscode-conventional-commits",
-        "EditorConfig.EditorConfig"
+        "editorconfig.editorconfig",
+        "adrianwilczynski.user-secrets",
+        "ms-dotnettools.csharp",
+        "kreativ-software.csharpextensions",
+        "jorgeserrano.vscode-csharp-snippets"
     ]
 }
