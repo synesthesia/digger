@@ -2,7 +2,7 @@
 {
     public class SearchParameters
     {
-        public string User { get; set; }
+        public string? User { get; set; }
 
         public long Start { get; set; }
 
@@ -12,6 +12,6 @@
 
         public Visibility Filter { get; set; }
 
-        public string ListName { get; set; }
+        public string? ListName { get; set; }
     }
 }

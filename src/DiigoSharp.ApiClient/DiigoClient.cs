@@ -32,15 +32,18 @@ namespace DiigoSharp.ApiClient
         {
             string requestUri = QueryStringHelpers.AddQueryString(BookmarksApiUrls.Query, this.GetQueryParameters(parameters));
             var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-           
+
             var response = await this.httpClient.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadFromJsonAsync<IEnumerable<BookmarkItem>>();
                 var bookmarksCollection = new BookmarksCollection();
-                bookmarksCollection.Bookmarks = content;
-                bookmarksCollection.Count = content.LongCount();
+                if (content != null)
+                {
+                    bookmarksCollection.Bookmarks = content;
+                    bookmarksCollection.Count = content.LongCount();
+                }
                 return bookmarksCollection;
             }
             else
@@ -50,7 +53,7 @@ namespace DiigoSharp.ApiClient
             }
         }
 
-        public async Task<SaveBookmarkResponse> SaveBookmark(Bookmark bookmark)
+        public async Task<SaveBookmarkResponse?> SaveBookmark(Bookmark bookmark)
         {
             string requestUri = QueryStringHelpers.AddQueryString(BookmarksApiUrls.Create, this.GetQueryParameters(bookmark));
 
@@ -79,7 +82,7 @@ namespace DiigoSharp.ApiClient
             {
                 var propertyValue = property.GetValue(obj, null);
 
-                if (propertyValue != null)
+                if (propertyValue != null && propertyValue.ToString() != null)
                 {
                     queryStrings.Add(property.Name.ToLower(), propertyValue.ToString().ToLower());
                 }

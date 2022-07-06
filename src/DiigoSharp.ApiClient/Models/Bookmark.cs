@@ -5,22 +5,22 @@ namespace DiigoSharp.ApiClient.Models
     public class Bookmark
     {
         [JsonPropertyName("title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [JsonPropertyName("url")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         [JsonPropertyName("desc")]
-        public string Desc { get; set; }
+        public string? Desc { get; set; }
 
         [JsonPropertyName("tags")]
-        public string Tags { get; set; }
+        public string? Tags { get; set; }
 
         [JsonPropertyName("shared")]
-        public string Shared { get; set; }
+        public string? Shared { get; set; }
 
         [JsonPropertyName("readLater")]
-        public string ReadLater { get; set; }
+        public string? ReadLater { get; set; }
 
         [JsonPropertyName("merge")]
         public bool Merge { get; set; }

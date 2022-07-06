@@ -11,6 +11,6 @@ namespace DiigoSharp.ApiClient
     {
         public Task<BookmarksCollection> GetBookmarks(SearchParameters parameters);
 
-        public Task<SaveBookmarkResponse> SaveBookmark(Bookmark bookmark);
+        public Task<SaveBookmarkResponse?> SaveBookmark(Bookmark bookmark);
     }
 }
