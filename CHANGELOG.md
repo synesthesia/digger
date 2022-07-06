@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://www.github.com/synesthesia/digger/releases/tag/v0.1.1) (2022-7-6)
+
+### Bug Fixes
+
+* compiler warnings ([8387b4d](https://www.github.com/synesthesia/digger/commit/8387b4d81d502ea3b48d2fd591af3e12eb7c2a8c))
+
 <a name="0.1.0"></a>
 ## [0.1.0](https://www.github.com/synesthesia/digger/releases/tag/v0.1.0) (2022-7-5)
 
