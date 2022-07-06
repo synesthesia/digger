@@ -4,30 +4,49 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-var builder =
-    Host.CreateDefaultBuilder(args)
-        .ConfigureLogging(logging =>
-        {
-            logging.ClearProviders();
-            logging.AddConsole();
-        });
-
-builder.ConfigureServices((ctx, services) =>
+namespace Digger
 {
-    var configurationRoot = ctx.Configuration;
+    internal class Program
+    {
+        public static async Task<int> Main(string[] args)
+        {
+            try
+            {
 
-    services.Configure<DiigoOptions>(
-        configurationRoot.GetSection("Diigo"));
+                var builder =
+                    Host.CreateDefaultBuilder(args)
+                        .ConfigureLogging(logging =>
+                        {
+                            logging.ClearProviders();
+                            logging.AddConsole();
+                        });
 
-    services.AddDiigoClient();
+                builder.ConfigureServices((ctx, services) =>
+                {
+                    var configurationRoot = ctx.Configuration;
 
-    services.AddSingleton<IQueryBookmarks, BookmarksQuery>();
-});
+                    services.Configure<DiigoOptions>(
+                        configurationRoot.GetSection("Diigo"));
 
-var app = builder.Build();
+                    services.AddDiigoClient();
 
-var query = app.Services.GetRequiredService<IQueryBookmarks>();
+                    services.AddSingleton<IQueryBookmarks, BookmarksQuery>();
+                });
 
-var result = await query.GetBookmarks();
+                var app = builder.Build();
 
+                var query = app.Services.GetRequiredService<IQueryBookmarks>();
 
+                var result = await query.GetBookmarks();
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                var msg = $"Unhandled exception: {ex.Message}";
+                Console.WriteLine(msg);
+                return 1;
+            }
+        }
+    }
+}
