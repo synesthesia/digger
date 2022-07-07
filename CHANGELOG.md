@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.1.2-alpha.2"></a>
+## [0.1.2-alpha.2](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.2) (2022-7-7)
+
+### Other
+
+* add readme to package ([9a3fb18](https://www.github.com/synesthesia/digger/commit/9a3fb181c13bb1ca585b52ab8d5758d16d08daeb))
+* **release:** 0.1.2-alpha.1 ([5392a49](https://www.github.com/synesthesia/digger/commit/5392a49a57cc0dbbc5d787029894158d22675667))
+
 <a name="0.1.2-alpha.1"></a>
 ## [0.1.2-alpha.1](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.1) (2022-7-7)
 
