@@ -2,6 +2,7 @@
 
 A tool to pull annotations from the Diigo social links platform and generate markdown files
 
+<!-- markdownlint-disable-next-line MD036-->
 **Not production ready**
 
 ## Installing
@@ -11,11 +12,13 @@ A tool to pull annotations from the Diigo social links platform and generate mar
 3. Configure Environment variables
 4. run the tool `digger` (details on command line options to follow)
 
+## Using
+
+To follow....
 
 ### Environment Variables
 
 Digger requires the following environment variables to be set:
-
 
 |Key|Comment
 |----|----|
