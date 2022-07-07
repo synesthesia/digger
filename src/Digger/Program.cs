@@ -24,6 +24,7 @@ namespace Digger
                         });
 
                 builder.ConfigureServices((ctx, services) =>
+                
                 {
                     var configurationRoot = ctx.Configuration;
 
@@ -32,7 +33,7 @@ namespace Digger
 
                     services.AddDiigoClient();
 
-                    services.AddSingleton<IQueryBookmarks, DiigoBookmarksQuery>();
+                    services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
 
                     services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
                 });

@@ -1,3 +1,4 @@
+using System.Linq;
 using Ardalis.GuardClauses;
 using Digger.Infra.Diigo;
 using Digger.Infra.Diigo.Models;
@@ -15,15 +16,15 @@ public interface IQueryBookmarks
     public Task<BookmarksCollection> GetBookmarks(JobParameters parameters);
 
 }
-public class DiigoBookmarksQuery : IQueryBookmarks
+public class ExportDiigoBookmarks : IQueryBookmarks
 {
     private DiigoOptions _settings;
     private readonly IDiigoClient _client;
 
-    private ILogger<DiigoBookmarksQuery> _log;
+    private ILogger<ExportDiigoBookmarks> _log;
     private IMarkdownNoteConverter _mdConverter;
 
-    public DiigoBookmarksQuery(IDiigoClient client, IMarkdownNoteConverter mdConverter, IOptions<DiigoOptions> opts, ILogger<DiigoBookmarksQuery> log)
+    public ExportDiigoBookmarks(IDiigoClient client, IMarkdownNoteConverter mdConverter, IOptions<DiigoOptions> opts, ILogger<ExportDiigoBookmarks> log)
     {
 
         Guard.Against.Null(nameof(client));
@@ -50,12 +51,14 @@ public class DiigoBookmarksQuery : IQueryBookmarks
 
             };
         }
+        parameters.DiigoSearchParameters.User = _settings.UserName;
 
         var result = await _client.GetBookmarks(parameters.DiigoSearchParameters);
 
         _log.LogInformation("Retrieved {numBookmarks} bookmarks", result.Count);
 
         var i = 0;
+        var n = result.Bookmarks.Count();
         var path = parameters.OutputPath;
         Directory.CreateDirectory(path);
         foreach (var bmk in result.Bookmarks)
@@ -63,6 +66,27 @@ public class DiigoBookmarksQuery : IQueryBookmarks
             var mdText = _mdConverter.ConvertBookmark(bmk);
             var title = $"{Slugify(bmk.Title)}.md";
             await File.WriteAllTextAsync($"{path}/{title}", mdText);
+            _log.LogInformation("Wrote file {i}/{n}: {title}", i, n, title);
+
+            var tags = ((string)(bmk.Tags)).Split(',');
+            var interim = tags.Where(t => t != parameters.InputTag).ToList();
+            interim.Add(parameters.OutputTag);
+            tags = interim.ToArray();
+            var outputTags = string.Join(',', tags);
+
+            var toUpdate = new Bookmark
+            {
+                Title = bmk.Title,
+                Url = bmk.Url,
+                Desc = bmk.Desc,
+                Tags = outputTags,
+                Shared = bmk.Shared != null ? (bool)bmk.Shared : false,
+                ReadLater = false,
+                Merge = false
+            };
+
+            var saveResult = await _client.SaveBookmark(toUpdate);
+
             i++;
 
         }

@@ -1,28 +1,32 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
+using Digger.Infra.Diigo.Helpers;
 
 namespace Digger.Infra.Diigo.Models
 {
+    [JsonObject]
     public class Bookmark
     {
-        [JsonPropertyName("title")]
+        [JsonProperty("title")]
         public string? Title { get; set; }
 
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string? Url { get; set; }
 
-        [JsonPropertyName("desc")]
+        [JsonProperty("desc")]
         public string? Desc { get; set; }
 
-        [JsonPropertyName("tags")]
+        [JsonProperty("tags")]
         public string? Tags { get; set; }
 
-        [JsonPropertyName("shared")]
-        public string? Shared { get; set; }
+        [JsonProperty("shared")]
+        [JsonConverter(typeof(CustomBooleanConverter))]
+        public bool Shared { get; set; }
 
-        [JsonPropertyName("readLater")]
-        public string? ReadLater { get; set; }
+        [JsonProperty("readLater")]
+        [JsonConverter(typeof(CustomBooleanConverter))]
+        public bool ReadLater { get; set; }
 
-        [JsonPropertyName("merge")]
+        [JsonProperty("merge")]
         public bool Merge { get; set; }
     }
 }
