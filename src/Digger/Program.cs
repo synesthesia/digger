@@ -1,5 +1,6 @@
 ﻿
 using Digger.Infra.Diigo.Configuration;
+using Digger.Infra.Markdown;
 using Digger.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +33,8 @@ namespace Digger
                     services.AddDiigoClient();
 
                     services.AddSingleton<IQueryBookmarks, DiigoBookmarksQuery>();
+
+                    services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
                 });
 
                 var app = builder.Build();

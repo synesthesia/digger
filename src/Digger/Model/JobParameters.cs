@@ -13,7 +13,7 @@ namespace Digger.Model
 
         public JobParameters()
         {
-            OutputPath = "./diggeroutput";
+            OutputPath = "./output";
 
         }
 

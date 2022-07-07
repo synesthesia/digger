@@ -39,19 +39,22 @@ namespace Digger.Infra.Markdown
                 document.Root.Add(new MdParagraph($"Bookmark created: {((DateTime)(bookmark.CreatedAt)).ToShortDateString()}"));
             }
 
-            document.Root.Add(new MdHeading("Notes", 2));
-
-            foreach (var ann in bookmark.Annotations)
+            if (bookmark.Annotations.Any())
             {
-                // annotations can contain HTML
-                string mdContent = HtmlStringToMarkdown(ann.Content);
-                document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
+                document.Root.Add(new MdHeading("Notes", 2));
 
-                foreach (var c in ann.Comments)
+                foreach (var ann in bookmark.Annotations)
                 {
-                    document.Root.Add(new MdParagraph(c.Content));
-                }
+                    // annotations can contain HTML
+                    string mdContent = HtmlStringToMarkdown(ann.Content);
+                    document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
 
+                    foreach (var c in ann.Comments)
+                    {
+                        document.Root.Add(new MdParagraph(c.Content));
+                    }
+
+                }
             }
 
             var mdOptions = new MdSerializationOptions();
