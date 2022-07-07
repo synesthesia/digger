@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.1.2-alpha.0"></a>
+## [0.1.2-alpha.0](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.0) (2022-7-7)
+
+### Other
+
+* add Nuget deploy script ([a8429d5](https://www.github.com/synesthesia/digger/commit/a8429d5732dc65d031c5608f6bdbb0d657e63ba9))
+* bring Diigo client into main assembly ([e9d96d2](https://www.github.com/synesthesia/digger/commit/e9d96d2c07d06e6997715958d667c09ee90877df))
+* config changes ([b06cb7f](https://www.github.com/synesthesia/digger/commit/b06cb7f1155555c033619b365b4718c7ad0d9701))
+* harmonise namespaces ([be21109](https://www.github.com/synesthesia/digger/commit/be2110922791910a6cc1a12f7b16254435edf149))
+* update readme ([35a93d0](https://www.github.com/synesthesia/digger/commit/35a93d068e7dc2c7e62477c006815160199de54c))
+* **release:** 0.1.1 ([63f9c7c](https://www.github.com/synesthesia/digger/commit/63f9c7c6ffad22b03e6dc93e13a07250ae0abc54))
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://www.github.com/synesthesia/digger/releases/tag/v0.1.1) (2022-7-6)
 
