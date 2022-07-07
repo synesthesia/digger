@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.1.2-alpha.3"></a>
+## [0.1.2-alpha.3](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.3) (2022-7-7)
+
+### Other
+
+* logging settings ([cffdb03](https://www.github.com/synesthesia/digger/commit/cffdb03f6ec9018737e54bfe15ff2db92ce9ee4d))
+
 <a name="0.1.2-alpha.2"></a>
 ## [0.1.2-alpha.2](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.2) (2022-7-7)
 
