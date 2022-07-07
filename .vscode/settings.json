@@ -3,6 +3,9 @@
         "tools"
     ],
     "dotnet-test-explorer.testProjectPath": "tests/**/*.csproj",
+    "editor.formatOnType": true,
+    "diffEditor.codeLens": true,
+    "editor.formatOnSave": false,
 
 
 }

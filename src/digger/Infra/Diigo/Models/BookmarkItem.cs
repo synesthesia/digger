@@ -1,37 +1,42 @@
-﻿using System.Text.Json.Serialization;
+﻿using Digger.Infra.Diigo.Helpers;
+using Newtonsoft.Json;
 
 namespace Digger.Infra.Diigo.Models
 {
+    [JsonObject]
     public class BookmarkItem
     {
-        [JsonPropertyName("title")]
+        [JsonProperty("title")]
         public string? Title { get; set; }
 
-        [JsonPropertyName("url")]
+        [JsonProperty("url")]
         public string? Url { get; set; }
 
-        [JsonPropertyName("user")]
+        [JsonProperty("user")]
         public string? User { get; set; }
 
-        [JsonPropertyName("desc")]
+        [JsonProperty("desc")]
         public string? Desc { get; set; }
 
-        [JsonPropertyName("tags")]
+        [JsonProperty("tags")]
         public string? Tags { get; set; }
 
-        [JsonPropertyName("shared")]
-        public string? Shared { get; set; }
+        [JsonProperty("shared")]
+        [JsonConverter(typeof(CustomBooleanConverter))]
+        public bool? Shared { get; set; }
 
-        [JsonPropertyName("created_at")]
-        public string? CreatedAt { get; set; }
+        [JsonProperty("created_at")]
+        [JsonConverter(typeof(CustomDateTimeConverter))]
+        public DateTime? CreatedAt { get; set; }
 
-        [JsonPropertyName("updated_at")]
-        public string? UpdatedAt { get; set; }
+        [JsonProperty("updated_at")]
+        [JsonConverter(typeof(CustomDateTimeConverter))]
+        public DateTime? UpdatedAt { get; set; }
 
-        [JsonPropertyName("comments")]
-        public List<object>? Comments { get; set; }
+        [JsonProperty("comments")]
+        public List<Comment>? Comments { get; set; }
 
-        [JsonPropertyName("annotations")]
-        public List<object>? Annotations { get; set; }
+        [JsonProperty("annotations")]
+        public List<Annotation>? Annotations { get; set; }
     }
 }

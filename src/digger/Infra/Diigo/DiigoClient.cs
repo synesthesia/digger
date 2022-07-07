@@ -2,8 +2,16 @@
 using Digger.Infra.Diigo.Exceptions;
 using Digger.Infra.Diigo.Helpers;
 using Digger.Infra.Diigo.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 using static Digger.Infra.Diigo.ApiEndPoints;
+using Newtonsoft.Json;
 
 namespace Digger.Infra.Diigo
 {
@@ -30,7 +38,9 @@ namespace Digger.Infra.Diigo
 
             if (response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadFromJsonAsync<IEnumerable<BookmarkItem>>();
+                //var content = await response.Content.ReadFromJsonAsync<IEnumerable<BookmarkItem>>();
+                var json = await response.Content.ReadAsStringAsync();
+                var content = JsonConvert.DeserializeObject<IEnumerable<BookmarkItem>>(json);
                 var bookmarksCollection = new BookmarksCollection();
                 if (content != null)
                 {

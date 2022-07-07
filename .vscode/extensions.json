@@ -5,6 +5,7 @@
         "adrianwilczynski.user-secrets",
         "ms-dotnettools.csharp",
         "kreativ-software.csharpextensions",
-        "jorgeserrano.vscode-csharp-snippets"
+        "jorgeserrano.vscode-csharp-snippets",
+        "Fudge.auto-using"
     ]
 }
