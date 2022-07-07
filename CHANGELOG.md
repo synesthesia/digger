@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0-alpha.2"></a>
+## [0.2.0-alpha.2](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-alpha.2) (2022-7-7)
+
+### ✨ Features
+
+* mark bookmarks as processed in upstream ([48f5953](https://www.github.com/synesthesia/digger/commit/48f5953e402b08e233927168567c586bd984babc))
+
 <a name="0.2.0-alpha.1"></a>
 ## [0.2.0-alpha.1](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-alpha.1) (2022-7-7)
 
