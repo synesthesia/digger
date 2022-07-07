@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0-alpha.0"></a>
+## [0.2.0-alpha.0](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-alpha.0) (2022-7-7)
+
+### ✨ Features
+
+* process diigo bookmark to markdown ([5f5bca4](https://www.github.com/synesthesia/digger/commit/5f5bca4d46071910c52949131ffd6ffb9402aee6))
+
+### 🐛 Bug Fixes
+
+* properly deserialize Diigo dates and bools ([4712737](https://www.github.com/synesthesia/digger/commit/47127376547d52f3d1bdee405e3348f6f14c227c))
+
+### Other
+
+* broken index ([e7c72f1](https://www.github.com/synesthesia/digger/commit/e7c72f1d971d581a18fa4f0beea2edcb272ac23f))
+
 <a name="0.1.2-alpha.3"></a>
 ## [0.1.2-alpha.3](https://www.github.com/synesthesia/digger/releases/tag/v0.1.2-alpha.3) (2022-7-7)
 

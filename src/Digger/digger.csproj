@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1.2-alpha.3</Version>
+    <Version>0.2.0-alpha.0</Version>
     <UserSecretsId>e769067e-c9d9-4d12-bde2-ed15c66846a2</UserSecretsId>
   </PropertyGroup>
 
