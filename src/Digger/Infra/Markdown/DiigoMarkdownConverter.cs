@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Digger.Infra.Diigo.Models;
 using Grynwald.MarkdownGenerator;
 using Microsoft.Extensions.Logging;
+using Html2Markdown;
 
 namespace Digger.Infra.Markdown
 {
@@ -42,7 +43,10 @@ namespace Digger.Infra.Markdown
 
             foreach (var ann in bookmark.Annotations)
             {
-                document.Root.Add(new MdBlockQuote(ann.Content));
+                // annotations can contain HTML
+                string mdContent = HtmlStringToMarkdown(ann.Content);
+                document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
+
                 foreach (var c in ann.Comments)
                 {
                     document.Root.Add(new MdParagraph(c.Content));
@@ -50,9 +54,20 @@ namespace Digger.Infra.Markdown
 
             }
 
-            var result = document.ToString();
+            var mdOptions = new MdSerializationOptions();
+            mdOptions.BulletListStyle = MdBulletListStyle.Dash;
+
+            var result = document.ToString(mdOptions);
 
             return result;
+        }
+
+        private string HtmlStringToMarkdown(string content)
+        {
+
+            var converter = new Converter();
+            var markdown = converter.Convert(content);
+            return markdown;
         }
     }
 }

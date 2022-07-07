@@ -34,9 +34,16 @@ namespace Digger.Infra.Diigo.Models
         public DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("comments")]
-        public List<Comment>? Comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
         [JsonProperty("annotations")]
-        public List<Annotation>? Annotations { get; set; }
+        public List<Annotation> Annotations { get; set; }
+
+        public BookmarkItem()
+        {
+            Comments = new List<Comment>();
+            Annotations = new List<Annotation>();
+
+        }
     }
 }

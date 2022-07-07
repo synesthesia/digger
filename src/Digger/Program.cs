@@ -1,5 +1,6 @@
 ﻿
 using Digger.Infra.Diigo.Configuration;
+using Digger.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -30,14 +31,16 @@ namespace Digger
 
                     services.AddDiigoClient();
 
-                    services.AddSingleton<IQueryBookmarks, BookmarksQuery>();
+                    services.AddSingleton<IQueryBookmarks, DiigoBookmarksQuery>();
                 });
 
                 var app = builder.Build();
 
                 var query = app.Services.GetRequiredService<IQueryBookmarks>();
 
-                var result = await query.GetBookmarks();
+                var jobParams = new JobParameters();
+
+                var result = await query.GetBookmarks(jobParams);
 
                 return 0;
             }
