@@ -1,7 +1,7 @@
 using Ardalis.GuardClauses;
-using DiigoSharp.ApiClient;
-using DiigoSharp.ApiClient.Models;
-using DiigoSharp.ApiClient.Configuration;
+using Digger.Infra.Diigo;
+using Digger.Infra.Diigo.Models;
+using Digger.Infra.Diigo.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -37,7 +37,9 @@ public class BookmarksQuery : IQueryBookmarks
             {
                 User = _settings.UserName,
                 Count = 100,
-                Filter = Visibility.All
+                Filter = Visibility.All,
+                Tags = new TagCollection(new [] {"#toprocess"} )
+
             };
         }
 

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace DiigoSharp.ApiClient.Models
+namespace Digger.Infra.Diigo.Models
 {
     public class BookmarkItem
     {

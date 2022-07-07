@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DiigoSharp.ApiClient.Models;
+﻿using Digger.Infra.Diigo.Models;
 
-namespace DiigoSharp.ApiClient
+namespace Digger.Infra.Diigo
 {
     public interface IDiigoClient
     {

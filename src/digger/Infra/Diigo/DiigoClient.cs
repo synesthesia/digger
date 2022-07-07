@@ -1,18 +1,11 @@
 ﻿using Ardalis.GuardClauses;
-using DiigoSharp.ApiClient.Exceptions;
-using DiigoSharp.ApiClient.Helpers;
-using DiigoSharp.ApiClient.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+using Digger.Infra.Diigo.Exceptions;
+using Digger.Infra.Diigo.Helpers;
+using Digger.Infra.Diigo.Models;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using static DiigoSharp.ApiClient.ApiEndPoints;
+using static Digger.Infra.Diigo.ApiEndPoints;
 
-namespace DiigoSharp.ApiClient
+namespace Digger.Infra.Diigo
 {
     public class DiigoClient : IDiigoClient
     {

@@ -1,4 +1,4 @@
-﻿namespace DiigoSharp.ApiClient.Models
+﻿namespace Digger.Infra.Diigo.Models
 {
     public class SearchParameters
     {
@@ -13,5 +13,16 @@
         public Visibility Filter { get; set; }
 
         public string? ListName { get; set; }
+
+        public TagCollection Tags {get; set;}
+
+
+        public SearchParameters()
+        {
+            Tags = new TagCollection();
+
+        }
+
+
     }
 }

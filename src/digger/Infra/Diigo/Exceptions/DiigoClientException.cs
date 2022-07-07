@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
-namespace DiigoSharp.ApiClient.Exceptions
+namespace Digger.Infra.Diigo.Exceptions
 {
     public class DiigoClientException : Exception
     {

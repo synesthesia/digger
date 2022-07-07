@@ -1,5 +1,5 @@
 ﻿
-using DiigoSharp.ApiClient.Configuration;
+using Digger.Infra.Diigo.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;

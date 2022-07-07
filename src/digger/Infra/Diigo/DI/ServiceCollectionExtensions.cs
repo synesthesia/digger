@@ -1,6 +1,6 @@
 ﻿using Ardalis.GuardClauses;
-using DiigoSharp.ApiClient;
-using DiigoSharp.ApiClient.Configuration;
+using Digger.Infra.Diigo;
+using Digger.Infra.Diigo.Configuration;
 using System.Net;
 using Microsoft.Extensions.Options;
 

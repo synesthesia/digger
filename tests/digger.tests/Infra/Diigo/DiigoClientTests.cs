@@ -1,6 +1,6 @@
 
 
-namespace DiigoSharp.Tests
+namespace Digger.Tests.Infra.Diigo
 {
     public class DiigoClientTests
     {
