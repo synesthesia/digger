@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0-beta.2"></a>
+## [0.2.0-beta.2](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.2) (2022-7-8)
+
+### ✨ Features
+
+* add bookmark tags to output ([553eea2](https://www.github.com/synesthesia/digger/commit/553eea22d2b88650c861654d1720bd90ded3caee))
+* tweak output format ([db9acb6](https://www.github.com/synesthesia/digger/commit/db9acb6727394e4178792935b55f650b410bbc5f))
+
+### Other
+
+* improve help message on o attribute ([a27cbf7](https://www.github.com/synesthesia/digger/commit/a27cbf79c426c56ab995b8865627395975594067))
+
 <a name="0.2.0-beta.1"></a>
 ## [0.2.0-beta.1](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.1) (2022-7-8)
 
