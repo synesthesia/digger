@@ -121,7 +121,7 @@ namespace Digger
             }
             catch (Exception ex)
             {
-                _log.LogError("Error in retrieving bookmarks from Diigo");
+                _log.LogError(ex, "Error in retrieving bookmarks from Diigo");
                 return 1;
             }
 
