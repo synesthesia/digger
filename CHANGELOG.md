@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0-beta.1"></a>
+## [0.2.0-beta.1](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.1) (2022-7-8)
+
+### 🐛 Bug Fixes
+
+* more detailed error logging ([f289bdf](https://www.github.com/synesthesia/digger/commit/f289bdfae8186dcddd1468ad472a080bdcb1d236))
+
 <a name="0.2.0-beta.0"></a>
 ## [0.2.0-beta.0](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.0) (2022-7-8)
 
