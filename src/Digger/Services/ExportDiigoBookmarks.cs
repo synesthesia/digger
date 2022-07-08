@@ -1,76 +1,91 @@
-using System.Linq;
 using Ardalis.GuardClauses;
 using Digger.Infra.Diigo;
 using Digger.Infra.Diigo.Models;
 using Digger.Infra.Diigo.Configuration;
+using Digger.Infra.Files;
 using Digger.Infra.Markdown;
-using Digger.Model;
+using Digger.Model.Params;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 
-public interface IQueryBookmarks
+namespace Digger.Services
 {
-    public Task<BookmarksCollection> GetBookmarks(JobParameters parameters);
-
-}
-public class ExportDiigoBookmarks : IQueryBookmarks
-{
-    private DiigoOptions _settings;
-    private readonly IDiigoClient _client;
-
-    private ILogger<ExportDiigoBookmarks> _log;
-    private IMarkdownNoteConverter _mdConverter;
-
-    public ExportDiigoBookmarks(IDiigoClient client, IMarkdownNoteConverter mdConverter, IOptions<DiigoOptions> opts, ILogger<ExportDiigoBookmarks> log)
+    public interface IQueryBookmarks
     {
+        public Task<BookmarksCollection> GetBookmarks(DiigoExportParams parameters);
 
-        Guard.Against.Null(nameof(client));
-        _client = client;
-        Guard.Against.Null(nameof(opts));
-        _settings = opts.Value;
-        Guard.Against.Null(mdConverter);
-        _mdConverter = mdConverter;
-        Guard.Against.Null(nameof(log));
-        _log = log;
     }
-
-    public async Task<BookmarksCollection> GetBookmarks(JobParameters parameters)
+    public class ExportDiigoBookmarks : IQueryBookmarks
     {
-        if (parameters.DiigoSearchParameters == null)
-        {
-            Guard.Against.NullOrEmpty(_settings.UserName, "username");
-            parameters.DiigoSearchParameters = new SearchParameters
-            {
-                User = _settings.UserName,
-                Count = 100,
-                Filter = Visibility.All,
-                Tags = new TagCollection(new[] { "#toprocess" })
+        private DiigoOptions _settings;
+        private readonly IDiigoClient _client;
 
-            };
+        private ILogger<ExportDiigoBookmarks> _log;
+        private IMarkdownNoteConverter _mdConverter;
+        private readonly IWriteFiles _writer;
+
+        public ExportDiigoBookmarks(
+            IDiigoClient client,
+            IMarkdownNoteConverter mdConverter,
+            IOptions<DiigoOptions> opts,
+            IWriteFiles writer,
+            ILogger<ExportDiigoBookmarks> log)
+        {
+
+            Guard.Against.Null(nameof(client));
+            _client = client;
+            Guard.Against.Null(nameof(opts));
+            _settings = opts.Value;
+            Guard.Against.Null(mdConverter);
+            _mdConverter = mdConverter;
+            Guard.Against.Null(writer);
+            _writer = writer;
+            Guard.Against.Null(nameof(log));
+            _log = log;
         }
-        parameters.DiigoSearchParameters.User = _settings.UserName;
 
-        var result = await _client.GetBookmarks(parameters.DiigoSearchParameters);
-
-        _log.LogInformation("Retrieved {numBookmarks} bookmarks", result.Count);
-
-        var i = 0;
-        var n = result.Bookmarks.Count();
-        var path = parameters.OutputPath;
-        Directory.CreateDirectory(path);
-        foreach (var bmk in result.Bookmarks)
+        public async Task<BookmarksCollection> GetBookmarks(DiigoExportParams parameters)
         {
-            var mdText = _mdConverter.ConvertBookmark(bmk);
-            var title = $"{Slugify(bmk.Title)}.md";
-            await File.WriteAllTextAsync($"{path}/{title}", mdText);
-            _log.LogInformation("Wrote file {i}/{n}: {title}", i, n, title);
+            if (parameters.DiigoSearchParameters == null)
+            {
+                Guard.Against.NullOrEmpty(_settings.UserName, "username");
+                parameters.DiigoSearchParameters = new SearchParameters
+                {
+                    User = _settings.UserName,
+                    Count = 100,
+                    Filter = Visibility.All,
+                    Tags = new TagCollection(new[] { "#toprocess" })
 
-            var tags = ((string)(bmk.Tags)).Split(',');
-            var interim = tags.Where(t => t != parameters.InputTag).ToList();
-            interim.Add(parameters.OutputTag);
+                };
+            }
+            parameters.DiigoSearchParameters.User = _settings.UserName;
+
+            var result = await _client.GetBookmarks(parameters.DiigoSearchParameters);
+
+            _log.LogInformation("Retrieved {numBookmarks} bookmarks", result.Count);
+
+            var i = 0;
+            var n = result.Bookmarks.Count();
+
+            foreach (var bmk in result.Bookmarks)
+            {
+                var mdText = _mdConverter.ConvertBookmark(bmk);
+                var title = bmk.Title ?? DateTime.UtcNow.ToString();
+                await _writer.WriteFileSlugified(parameters.OutputPath, title, mdText);
+                var saveResult = await MarkBookmarkAsProcessed(bmk, parameters.InputTag, parameters.OutputTag);
+                i++;
+            }
+
+            return result;
+
+        }
+
+        private async Task<SaveBookmarkResponse?> MarkBookmarkAsProcessed(BookmarkItem bmk, string inputTag, string outputTag)
+        {
+
+            var tags = bmk.Tags == null ? new string[0] : ((string)(bmk.Tags)).Split(',');
+            var interim = tags.Where(t => t != inputTag).ToList();
+            interim.Add(outputTag);
             tags = interim.ToArray();
             var outputTags = string.Join(',', tags);
 
@@ -87,32 +102,16 @@ public class ExportDiigoBookmarks : IQueryBookmarks
 
             var saveResult = await _client.SaveBookmark(toUpdate);
 
-            i++;
+            if (saveResult != null)
+            {
+                _log.LogInformation("Marked bookmark as processed in Diigo - {url}", bmk.Url);
+
+            }
+
+            return saveResult;
 
         }
 
-        return result;
 
-    }
-
-    private string Slugify(string src, int maxLength = 20)
-    {
-        var slug = src.Replace(' ', '-').ToLower().Substring(0, maxLength);
-        /*
-        foreach (char c in System.IO.Path.GetInvalidFileNameChars())
-        {
-            slug = slug.Replace(c, '_');
-        }
-        */
-        //var illegals = string.Concat(System.IO.Path.GetInvalidFileNameChars()) ;
-        //var test = $"[{illegals}]|[-]{2}";
-        /*
-        var test = Regex.Escape(@"[:;,.]");
-        var pattern = new Regex(test);
-        pattern.Replace(slug, "-");
-        */
-        slug = slug.Replace(':', '-').Replace(';', '-').Replace('\\', '-').Replace('/', '-');
-        slug = slug.TrimEnd('-');
-        return slug;
     }
 }

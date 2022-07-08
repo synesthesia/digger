@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Digger.Infra.Diigo.Models;
+using Digger.Model.Verbs;
 
-namespace Digger.Model
+namespace Digger.Model.Params
 {
-    public class JobParameters
+    public class DiigoExportParams
     {
 
         // tag we serach for
@@ -17,11 +14,28 @@ namespace Digger.Model
         public SearchParameters? DiigoSearchParameters { get; set; }
         public string OutputPath { get; set; }
 
-        public JobParameters()
+        public DiigoExportParams()
         {
             OutputPath = "./output";
             InputTag = "#toprocess";
             OutputTag = "#processed";
+            DiigoSearchParameters = new SearchParameters
+            {
+                Count = 100,
+                Filter = Visibility.All,
+                Tags = new TagCollection(new[] { InputTag })
+
+            };
+
+        }
+
+        public DiigoExportParams(DiigoExportOptions commandOpts)
+        {
+            InputTag = "#toprocess";
+            OutputTag = "#processed";
+            OutputPath = commandOpts.OutputDirectory ?? "./output";
+
+
             DiigoSearchParameters = new SearchParameters
             {
                 Count = 100,
