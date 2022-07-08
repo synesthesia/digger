@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using Digger.Infra.Diigo.Models;
 using Grynwald.MarkdownGenerator;
 using Microsoft.Extensions.Logging;
 using Html2Markdown;
+using System.Text;
 
 namespace Digger.Infra.Markdown
 {
@@ -60,6 +62,15 @@ namespace Digger.Infra.Markdown
 
                 }
             }
+
+            var tags = (bookmark.Tags == null ? new string[0] : ((string)(bookmark.Tags)).Split(',')).ToList();
+
+            document.Root.Add(new MdHeading("Tags", 2));
+
+            var sb = new StringBuilder();
+            tags.Select(t => sb.Append($"#{t} "));
+            sb.Append("#IngestToProcess");
+            document.Root.Add(new MdParagraph(sb.ToString()));
 
             var mdOptions = new MdSerializationOptions();
             mdOptions.BulletListStyle = MdBulletListStyle.Dash;

@@ -69,6 +69,7 @@ namespace Digger.Services
 
             foreach (var bmk in result.Bookmarks)
             {
+                bmk.RemoveTag(parameters.InputTag);
                 var mdText = _mdConverter.ConvertBookmark(bmk);
                 var title = bmk.Title ?? DateTime.UtcNow.ToString();
                 await _writer.WriteFileSlugified(parameters.OutputPath, title, mdText);
@@ -80,21 +81,20 @@ namespace Digger.Services
 
         }
 
+
+
         private async Task<SaveBookmarkResponse?> MarkBookmarkAsProcessed(BookmarkItem bmk, string inputTag, string outputTag)
         {
 
-            var tags = bmk.Tags == null ? new string[0] : ((string)(bmk.Tags)).Split(',');
-            var interim = tags.Where(t => t != inputTag).ToList();
-            interim.Add(outputTag);
-            tags = interim.ToArray();
-            var outputTags = string.Join(',', tags);
+            bmk.RemoveTag(inputTag);
+            bmk.AddTag(outputTag);
 
             var toUpdate = new Bookmark
             {
                 Title = bmk.Title,
                 Url = bmk.Url,
                 Desc = bmk.Desc,
-                Tags = outputTags,
+                Tags = bmk.Tags,
                 Shared = bmk.Shared != null ? (bool)bmk.Shared : false,
                 ReadLater = false,
                 Merge = false
