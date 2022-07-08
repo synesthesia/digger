@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0-beta.0"></a>
+## [0.2.0-beta.0](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.0) (2022-7-8)
+
+### Other
+
+* better organisation ([d76bff0](https://www.github.com/synesthesia/digger/commit/d76bff0f36af8018c50dcbc35888fb50560c340e))
+* bump to beta ([a29e0fc](https://www.github.com/synesthesia/digger/commit/a29e0fcfba67771567238dd4d619f4ba6a51ec2a))
+* minor edits ([4810a02](https://www.github.com/synesthesia/digger/commit/4810a0290b90e2e2834fb0d4c87e185f96b8509c))
+
 <a name="0.2.0-alpha.2"></a>
 ## [0.2.0-alpha.2](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-alpha.2) (2022-7-7)
 
