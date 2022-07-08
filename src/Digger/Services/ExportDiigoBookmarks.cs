@@ -62,7 +62,7 @@ namespace Digger.Services
 
             var result = await _client.GetBookmarks(parameters.DiigoSearchParameters);
 
-            _log.LogInformation("Retrieved {numBookmarks} bookmarks", result.Count);
+            _log.LogInformation("Retrieved {numBookmarks} bookmarks matching the filter", result.Count);
 
             var i = 0;
             var n = result.Bookmarks.Count();

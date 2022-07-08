@@ -29,6 +29,7 @@ namespace Digger
 
                 var builder =
                     Host.CreateDefaultBuilder(args)
+                        .UseContentRoot(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
                         .ConfigureLogging((ctx, logging) =>
                         {
                             logging.AddConfiguration(ctx.Configuration.GetSection("Logging"));
@@ -55,7 +56,6 @@ namespace Digger
                 _app = builder.Build();
 
                 _log = _app.Services.GetRequiredService<ILogger<Program>>();
-
 
                 var verbs = LoadVerbs();
                 //var parser = Parser.Default;
