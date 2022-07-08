@@ -8,7 +8,7 @@ namespace Digger.Model.Verbs
     public class DiigoExportOptions
     {
 
-        [Option('o', "output-directory", HelpText = "Relative path to receive notes, defaults to ./output")]
+        [Option('o', "output-directory", HelpText = "Relative path to receive notes, defaults to ./output. If directory is below current directory, must start './'")]
 	    public string? OutputDirectory { get; set; }
 
 
