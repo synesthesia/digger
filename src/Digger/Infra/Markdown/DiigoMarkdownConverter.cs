@@ -27,7 +27,7 @@ namespace Digger.Infra.Markdown
 
             if (!string.IsNullOrEmpty(bookmark.Url))
             {
-                document.Root.Add(new MdParagraph(new MdLinkSpan("Link", ((string)bookmark.Url))));
+                document.Root.Add(new MdParagraph(new MdLinkSpan("Source Link", ((string)bookmark.Url))));
             }
 
             //document.Root.Add(new MdParagraph(new MdLinkSpan("Archive Link", "")));
@@ -39,9 +39,13 @@ namespace Digger.Infra.Markdown
                 document.Root.Add(new MdParagraph($"Bookmark created: {((DateTime)(bookmark.CreatedAt)).ToShortDateString()}"));
             }
 
+            document.Root.Add(new MdHeading("See also", 2));
+
+            document.Root.Add(new MdParagraph("*TODO add references*"));
+
             if (bookmark.Annotations.Any())
             {
-                document.Root.Add(new MdHeading("Notes", 2));
+                document.Root.Add(new MdHeading("Highlights from source page", 2));
 
                 foreach (var ann in bookmark.Annotations)
                 {
