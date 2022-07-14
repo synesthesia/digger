@@ -45,3 +45,15 @@ Digger requires the following environment variables to be set:
 - `git push --follow-tags origin master`
 - `dotnet pack`
 - `dotnet nuget push`
+
+## Acknowledgements
+
+This tool relies heavily on trhe following third-party libraries (aside from .Net and various standard testing libraries)
+
+|Library|Source|Author(s)|Licence|
+|----|----|----|----|
+|markdown-generator|[ap0llo/markdown-generator](https://github.com/ap0llo/markdown-generator)|[Andreas Grünwald](https://github.com/ap0llo) and others|[MIT](https://opensource.org/licenses/MIT)|
+|CommandLineParser|[commandlineparser/commandline](https://github.com/commandlineparser/commandline)|[Giacomo Stelluti Scala](https://github.com/gsscoder) & Contributors|[MIT](https://opensource.org/licenses/MIT)|
+|Html2Markdown|[baynezy/Html2Markdown](https://github.com/baynezy/Html2Markdown)|[Simon Baynes](https://github.com/baynezy)|[Apache Licence 2.0](https://opensource.org/licenses/Apache-2.0)|
+
+
