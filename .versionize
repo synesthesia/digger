@@ -20,6 +20,5 @@
       }
     ]
   },
-  "preRelease" : "beta",
   "aggregatePreReleases" : true
 }
