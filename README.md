@@ -2,6 +2,14 @@
 
 A tool to pull annotations from the Diigo social links platform and generate markdown files
 
+## Badges
+
+[![NuGet version (Digger)](https://img.shields.io/nuget/vpre/Digger.svg?style=flat-square)](https://www.nuget.org/packages/Digger/)
+
+[![Issues (Digger)](https://img.shields.io/github/issues/synesthesia/digger?style=flat-square)](https://github.com/synesthesia/digger/issues)
+
+[![Pull Requests (Digger)](https://img.shields.io/github/issues-pr/synesthesia/digger?style=flat-square)](https://github.com/synesthesia/digger/pulls)
+
 ## Caution
 
 You are welcome to use this tool yourself, however as .Net tools run with full trust you should read the source code and satisfy yourself that it is safe to do so on your machine.
