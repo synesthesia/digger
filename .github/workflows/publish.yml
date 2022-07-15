@@ -38,6 +38,7 @@ jobs:
       - name: Push to Nuget
         if: steps.versionize.outcome == 'success'
         run: dotnet nuget push "nupkg/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
+        
       - name: Push changes to GitHub
         if: steps.versionize.outcome == 'success'
         uses: ad-m/github-push-action@master
