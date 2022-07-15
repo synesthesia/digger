@@ -32,7 +32,9 @@ jobs:
 
       - name: Build Package
         if: steps.versionize.outcome == 'success'
-        run: dotnet pack --output nupkgs --include-source --configuration Release --include-symbols
+        run: |
+          dotnet publish --output nupkgs --configuration Release
+          dotnet pack --output nupkgs --include-source --configuration Release --include-symbols
       - name: Push to Nuget
         if: steps.versionize.outcome == 'success'
         run: dotnet nuget push "nupkgs/*.nupkg" -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
