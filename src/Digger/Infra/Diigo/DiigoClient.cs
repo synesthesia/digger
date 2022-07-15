@@ -2,16 +2,9 @@
 using Digger.Infra.Diigo.Exceptions;
 using Digger.Infra.Diigo.Helpers;
 using Digger.Infra.Diigo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using static Digger.Infra.Diigo.ApiEndPoints;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
+using static Digger.Infra.Diigo.ApiEndPoints;
 
 namespace Digger.Infra.Diigo
 {
@@ -84,10 +77,14 @@ namespace Digger.Infra.Diigo
             foreach (var property in properties)
             {
                 var propertyValue = property.GetValue(obj, null);
-
-                if (propertyValue != null && propertyValue.ToString() != null)
+                if (propertyValue == null)
                 {
-                    queryStrings.Add(property.Name.ToLower(), propertyValue.ToString().ToLower());
+                    continue;
+                }
+                var stringValue = propertyValue.ToString()?.ToLower();
+                if (stringValue != null)
+                {
+                    queryStrings.Add(property.Name.ToLower(), stringValue);
                 }
             }
 

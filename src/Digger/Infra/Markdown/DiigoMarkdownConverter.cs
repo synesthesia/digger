@@ -1,12 +1,7 @@
-using System.Reflection.Metadata;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Digger.Infra.Diigo.Models;
 using Grynwald.MarkdownGenerator;
-using Microsoft.Extensions.Logging;
 using Html2Markdown;
+using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace Digger.Infra.Markdown
@@ -49,13 +44,19 @@ namespace Digger.Infra.Markdown
             {
                 document.Root.Add(new MdHeading("Highlights from source page", 2));
 
-                foreach (var ann in bookmark.Annotations)
+                foreach (var annotation in bookmark.Annotations)
                 {
                     // annotations can contain HTML
-                    string mdContent = HtmlStringToMarkdown(ann.Content);
-                    document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
-
-                    foreach (var c in ann.Comments)
+                    if (annotation.Content != null)
+                    {
+                        string mdContent = HtmlStringToMarkdown(annotation.Content);
+                        document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
+                    }
+                    if (annotation.Comments == null)
+                    {
+                        continue;
+                    }
+                    foreach (var c in annotation.Comments)
                     {
                         document.Root.Add(new MdParagraph(c.Content));
                     }

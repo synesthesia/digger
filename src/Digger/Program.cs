@@ -1,7 +1,5 @@
 ﻿using Ardalis.GuardClauses;
 using CommandLine;
-using CommandLine.Text;
-using Digger.Infra.Diigo;
 using Digger.Infra.Diigo.Configuration;
 using Digger.Infra.Files;
 using Digger.Infra.Markdown;
@@ -57,7 +55,7 @@ namespace Digger
 
                 _log = _app.Services.GetRequiredService<ILogger<Program>>();
 
-                var verbs = LoadVerbs();
+                //var verbs = LoadVerbs();
                 //var parser = Parser.Default;
                 //var parser = new CommandLine.Parser(with => with.HelpWriter = null);
                 var parser = new Parser(with =>
@@ -89,6 +87,7 @@ namespace Digger
             }
         }
 
+        /*
         //load all types using Reflection
         private	static Type[] LoadVerbs()
         {
@@ -98,14 +97,15 @@ namespace Digger
 
         private static async Task<int> Run(object obj)
         {
-        switch (obj)
-        {
-            case DiigoExportOptions d:
-                return await RunDiigoExportAndReturnExitCode(d);
-            default:
-                return 1;
+            switch (obj)
+            {
+                case DiigoExportOptions d:
+                    return await RunDiigoExportAndReturnExitCode(d);
+                default:
+                    return 1;
+            }
         }
-        }
+        */
 
         static async  Task<int> RunDiigoExportAndReturnExitCode(DiigoExportOptions options)
         {
@@ -113,7 +113,9 @@ namespace Digger
             {
                 Guard.Against.Null(nameof(_app));
 
+                #pragma warning disable CS8602 // We've just checked that _app is not null!
                 var query = _app.Services.GetRequiredService<IQueryBookmarks>();
+                #pragma warning restore CS8602
 
                 var result = await query.GetBookmarks(new DiigoExportParams(options));
 

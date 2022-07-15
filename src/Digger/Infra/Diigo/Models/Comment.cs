@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Digger.Infra.Diigo.Helpers;
 
@@ -14,13 +10,13 @@ namespace Digger.Infra.Diigo.Models
         /// Comment content
         /// </summary>
         [JsonProperty("content")]
-        public string Content {get; set;}
+        public string? Content {get; set;}
 
         /// <summary>
         /// Diigo User name of comment author
         /// </summary>
         [JsonProperty("user")]
-        public string User {get; set;}
+        public string? User {get; set;}
 
 
         /// <summary>

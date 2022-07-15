@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Digger.Infra.Diigo.Models;
 using Digger.Infra.Markdown;
 using Grynwald.MarkdownGenerator;
@@ -29,10 +25,12 @@ namespace Digger.Tests.Infra.Markdown
 
             /*
                 we want to escape the title in our final document
-                so we need to compare an escaped version oif our random input
+                so we need to compare an escaped version of our random input
                 title with the result
             */
+            #pragma warning disable CS8604
             var expectedTitle = new MdTextSpan(bookMark.Title).ToString();
+            #pragma warning restore CS8604
 
             var result = _sut.ConvertBookmark(bookMark);
 
