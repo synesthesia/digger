@@ -19,20 +19,6 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: PAth lister
-      id: pl
-      uses: Rishabh510/Path-lister-action@master
-      with:
-        path: "./src"
-        type: ".csproj"
-
-    - name: Output results
-      run: |
-        echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
-        for i in ${{ steps.pl.outputs.paths }}; do
-          echo $i
-        done
-
     - name: Test
       run: dotnet test --logger "trx" /p:CollectCoverage=true /p:CoverletOutputFormat=lcov  /p:ExcludeByFile="**/PlatformAbstractions.cs"
 
