@@ -1,0 +1,45 @@
+name: Enhancement request
+description: Request a new feature
+title: "[Request]: "
+labels: ["enhancement", "triage"]
+assignees:
+  - synesthesia
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to request a new feature!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: request-summary
+    attributes:
+      label: What is your request?
+      description: What would you like to be able to do with this tool?
+      placeholder: Tell us what you would like to be able to do
+      value: "A new feature..."
+    validations:
+      required: true
+  - type: textarea
+    id: benefit
+    attributes:
+      label: How would this help you?
+      description: What improvements to your workflow would this enable?
+      placeholder: Tell us about your desired workflow
+      value: ""
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
