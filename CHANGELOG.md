@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://www.github.com/synesthesia/digger/releases/tag/v0.4.1) (2022-7-15)
+
+### 🐛 Bug Fixes
+
+* minor edit to bump minor version ([7230c13](https://www.github.com/synesthesia/digger/commit/7230c13268e372e51e00265f0f68dc725ca62455))
+
+### Other
+
+* **release:** 0.4.0 ([92c4b69](https://www.github.com/synesthesia/digger/commit/92c4b692f413b9339b11897616f38db4e05b4465))
+
 <a name="0.4.0"></a>
 ## [0.4.0](https://www.github.com/synesthesia/digger/releases/tag/v0.4.0) (2022-7-15)
 
