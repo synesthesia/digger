@@ -32,7 +32,7 @@ body:
       label: How would this help you?
       description: What improvements to your workflow would this enable?
       placeholder: Tell us about your desired workflow
-      value: ""
+      value: "My work would be improved by this because..."
     validations:
       required: true
   - type: checkboxes
