@@ -32,7 +32,7 @@ body:
       label: Expected behaviour?
       description: What did you expect to happen?
       placeholder: Tell us what you expected to happen
-      value: ""
+      value: "I expected to see..."
     validations:
       required: true
   - type: textarea
