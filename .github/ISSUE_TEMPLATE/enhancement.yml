@@ -35,6 +35,15 @@ body:
       value: "My work would be improved by this because..."
     validations:
       required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What alternatives have you considered?
+      description: What other ways could you (or have you) address this problem?
+      placeholder: Tell other ways of doing it
+      value: "..."
+    validations:
+      required: false
   - type: checkboxes
     id: terms
     attributes:
