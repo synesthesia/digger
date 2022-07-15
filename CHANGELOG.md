@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.3.0"></a>
+## [0.3.0](https://www.github.com/synesthesia/digger/releases/tag/v0.3.0) (2022-7-15)
+
+### 🐛 Bug Fixes
+
+* folder in publish workflow ([0047e0e](https://www.github.com/synesthesia/digger/commit/0047e0e64d351898beee54008b803b8cb3189ada))
+
+### Other
+
+* Merge branch 'master' of github.com:synesthesia/digger ([ed09a19](https://www.github.com/synesthesia/digger/commit/ed09a19a0286aff179da8bc6339c9d515f00609a))
+* Update publish.yml ([49bb261](https://www.github.com/synesthesia/digger/commit/49bb261ab27b395bb6ae6fc7536bbce077dd2841))
+
 <a name="0.2.0"></a>
 ## [0.2.0](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0) (2022-7-15)
 
