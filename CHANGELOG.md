@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.2.0"></a>
+## [0.2.0](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0) (2022-7-15)
+
+### 🐛 Bug Fixes
+
+* casing of files breaking GH actions ([372e4a3](https://www.github.com/synesthesia/digger/commit/372e4a351d41c316f273c435a4596fc2e885330e))
+
+### Other
+
+* Delete bug_report.md ([032ea6c](https://www.github.com/synesthesia/digger/commit/032ea6c66f491a5a01e349465dc9995ea1a0e393))
+* Delete feature_request.md ([2a25d50](https://www.github.com/synesthesia/digger/commit/2a25d50ca3deffcf5d39d10028b2fbef9d2ca64b))
+* Update bug.yml ([c3bcd6d](https://www.github.com/synesthesia/digger/commit/c3bcd6d361e5ba58223d2f87cda7821f41c92d2c))
+* Update ci.yml ([9276ce7](https://www.github.com/synesthesia/digger/commit/9276ce787e5e9cd9b5120913f93bb2a3e9d3a6ec))
+* Update ci.yml ([afeedb7](https://www.github.com/synesthesia/digger/commit/afeedb7dfa8a1d7586d3339e0c285b5376f17255))
+* Update ci.yml ([1d02a95](https://www.github.com/synesthesia/digger/commit/1d02a957c142acb65bd6c4cb0c6144de1c18c233))
+* Update enhancement.yml ([81c0e7d](https://www.github.com/synesthesia/digger/commit/81c0e7de718c8758738e0afa2418d3a69298ecd7))
+* Update enhancement.yml ([f85ed71](https://www.github.com/synesthesia/digger/commit/f85ed71649021e1c24ee33ed96d73ca25db11aec))
+* Update issue templates ([9dd3aba](https://www.github.com/synesthesia/digger/commit/9dd3aba4fdd160cd60083bfa1a85515fbd18a7a3))
+* add CI action ([bfa8578](https://www.github.com/synesthesia/digger/commit/bfa85786ca09c96bb7c785e2a78f5b1a3e05f41d))
+* add codeql workflow ([d900b01](https://www.github.com/synesthesia/digger/commit/d900b01a6e3fce20db5441b50955bba4ed80d349))
+* add dependabot config ([68c1f3a](https://www.github.com/synesthesia/digger/commit/68c1f3a251a0304ff9c71bc7b01159db0f739bf5))
+* add publish workflow ([1847092](https://www.github.com/synesthesia/digger/commit/1847092c95ee20e3028ee0bbefb82a2d2c42be3f))
+* add test report action ([d6961bb](https://www.github.com/synesthesia/digger/commit/d6961bbae4ef3c714583805dc332a1128b126936))
+* bump version on codeql ([066c116](https://www.github.com/synesthesia/digger/commit/066c116f25694f8bd22e466cfd44e1e106813fef))
+* code tidy and fix warnings ([0669eb8](https://www.github.com/synesthesia/digger/commit/0669eb839a7ec6e35f898c1f7777cf55589b0897))
+* github plumbing ([fd734f6](https://www.github.com/synesthesia/digger/commit/fd734f6e978a70c86bfc370c3a9aeba6eb6b415f))
+* housekeeping ([9e50507](https://www.github.com/synesthesia/digger/commit/9e5050714d1e87ddd0bb0376b8fe8f350a363c62))
+* remove beta tag in .versionize ([1670afb](https://www.github.com/synesthesia/digger/commit/1670afb33084c755e1258e4d4e07e12d0043aab1))
+* update README ([72437be](https://www.github.com/synesthesia/digger/commit/72437beba76744170e2e7802b2c54e5dd3f5217a))
+* update README ([54630fe](https://www.github.com/synesthesia/digger/commit/54630fe79718f549393514a8d202cad285cd97ca))
+* update README ([664ee9d](https://www.github.com/synesthesia/digger/commit/664ee9d79e7b23b2f143d582b659af5fdbfb61f0))
+* **deps:** bump Microsoft.NET.Test.Sdk from 17.1.0 to 17.2.0 (#8) ([332ae42](https://www.github.com/synesthesia/digger/commit/332ae426e71a036bfbad3550fbe0946fcb16efa4))
+* **deps:** bump xunit.runner.visualstudio from 2.4.3 to 2.4.5 (#7) ([c2ad1b6](https://www.github.com/synesthesia/digger/commit/c2ad1b6b06b2521a24c4c5d844b7736177b70201))
+
 <a name="0.2.0-beta.2"></a>
 ## [0.2.0-beta.2](https://www.github.com/synesthesia/digger/releases/tag/v0.2.0-beta.2) (2022-7-8)
 
