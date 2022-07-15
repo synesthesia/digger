@@ -37,10 +37,12 @@ Digger requires the following environment variables to be set:
 
 - clone this repo
 - run `yarn install`
-- install VS Code, open working copy
+- install VS Code
+- open working copy
 - install all recommended extensions
 - install [Versionize](https://github.com/versionize/versionize)
-- make changes on a branch, commit using conventional commits
+- make changes on a branch
+- commit using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## Releasing
 
