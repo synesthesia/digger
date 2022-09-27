@@ -40,7 +40,7 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="Grynwald.MarkdownGenerator" Version="2.5.34" />
-    <PackageReference Include="Html2Markdown" Version="5.0.2.561" />
+    <PackageReference Include="Html2Markdown" Version="5.1.0.703" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
