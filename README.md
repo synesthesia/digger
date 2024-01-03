@@ -56,7 +56,7 @@ Digger requires the following environment variables to be set:
 - install VS Code
 - open working copy
 - install all recommended extensions
-- install [Versionize](https://github.com/versionize/versionize)
+- install [Versionize](https://github.com/versionize/versio nize)
 - make changes on a branch
 - commit using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
@@ -64,7 +64,7 @@ Digger requires the following environment variables to be set:
 
 If you want to test a build locally:
 
-`dotnet tool unisntall -g digger`
+`dotnet tool uninstall -g digger`
 
 And then from root of working copy, after build:
 

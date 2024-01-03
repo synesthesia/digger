@@ -6,7 +6,6 @@
         "ms-dotnettools.csharp",
         "kreativ-software.csharpextensions",
         "jorgeserrano.vscode-csharp-snippets",
-        "fudge.auto-using",
         "adrianwilczynski.namespace"
     ]
 }
