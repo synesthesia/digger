@@ -39,6 +39,7 @@ Digger requires the following environment variables to be set:
 |DIIGO__APIKEY|Diigo API key|
 |DIIGO__USERNAME|Diigo Username|
 |DIIGO__PASSWORD|Diigo Password|
+|HYPOTHESIS__APITOKEN|Hypothesis API Token|
 
 ## Using
 

@@ -2,10 +2,11 @@
 using CommandLine;
 using Digger.Infra.Diigo.Configuration;
 using Digger.Infra.Files;
+using Digger.Infra.Hypothesis.Configuration;
 using Digger.Infra.Markdown;
 using Digger.Model.Params;
 using Digger.Model.Verbs;
-using Digger.Services;
+using Digger.Services; 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -44,7 +45,11 @@ namespace Digger
                     services.Configure<DiigoOptions>(
                         configurationRoot.GetSection("Diigo"));
 
+                    services.Configure<HypothesisOptions>(
+                        configurationRoot.GetSection("Hypothesis"));
+                    
                     services.AddDiigoClient();
+                    services.AddHypothesisClient();
                     services.AddSingleton<IFileSystem, FileSystem>();
                     services.AddSingleton<IWriteFiles, BookmarkFileWriter>();
                     services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
