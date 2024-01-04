@@ -1,6 +1,11 @@
 # Digger
 
-A tool to pull annotations from the Diigo social links platform and generate markdown files
+A tool to pull annotations from a variety of sources and  generate markdown files.
+
+Supported sources:
+
+- [Diigo](https://www.diigo.com/)
+- [Hypothes.is](https://hypothes.is/)
 
 ## Badges
 
@@ -43,12 +48,21 @@ Digger requires the following environment variables to be set:
 
 ## Using
 
+### Diigo
+
 1. make sure that any Diigo entries you wish to process are tagged `#toprocess`
 2. run `digger diigo -o <relative path to my output directory`>
 3. for each entry processed a file will be created in the directory you nominated
 4. Diigo entries that have been processed will have tag `#toprocess` removed and tag `#processed` added
 5. edit the resulting files to your taste in the editor of your choosing
 6. that's it!
+
+### Hypothes.is
+
+1. run `digger hypothesis -o <relative path to my output directory> -u <url of source page>`
+2. a file will be created in the directory you nominated
+3. edit the resulting files to your taste in the editor of your choosing
+
 
 ## Building
 
