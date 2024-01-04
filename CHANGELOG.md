@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="0.5.0"></a>
+## [0.5.0](https://www.github.com/synesthesia/digger/releases/tag/v0.5.0) (2024-01-04)
+
+### ✨ Features
+
+* Hypothesis basic use ([#34](https://www.github.com/synesthesia/digger/issues/34)) ([d9e4c16](https://www.github.com/synesthesia/digger/commit/d9e4c16ea64e92b97d9e9d9b6f501337c8e3e49a))
+
+### Other
+
+* badges on readme ([eef1529](https://www.github.com/synesthesia/digger/commit/eef15290324c50f4a6583e7f594d4d05b4785e60))
+* minor updates ([7db8561](https://www.github.com/synesthesia/digger/commit/7db8561a3e572d1f2b725bc673d2edef46d7a144))
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://www.github.com/synesthesia/digger/releases/tag/v0.4.1) (2022-7-15)
 
