@@ -1,4 +1,5 @@
 using Ardalis.GuardClauses;
+using Digger.Infra.Files;
 using Digger.Infra.Hypothesis;
 using Digger.Infra.Hypothesis.Configuration;
 using Digger.Infra.Hypothesis.Models;
@@ -15,11 +16,13 @@ namespace Digger.Services
         private readonly IHypothesisMarkdownConverter _mdConverter;
         private readonly HypothesisOptions _settings;
         private ILogger<ExportHypothesisAnnotations> _log;
+        private IWriteFiles _writer;
 
         public ExportHypothesisAnnotations(
             IHypothesisClient client,
             IOptions<HypothesisOptions> opts,
             IHypothesisMarkdownConverter mdConverter,
+            IWriteFiles writer,
             ILogger<ExportHypothesisAnnotations> log
             )
         {
@@ -35,10 +38,13 @@ namespace Digger.Services
             Guard.Against.Null(nameof(mdConverter));
             _mdConverter = mdConverter;
 
+            Guard.Against.Null(writer);
+            _writer = writer;
+
 
         }
 
-        public async Task<IEnumerable<string>> SearchAnnotations(HypothesisExportParams parameters)
+        public async Task<IEnumerable<MdTextResult>> SearchAnnotations(HypothesisExportParams parameters)
         {
             if (parameters.HypothesisSearchParameters == null)
             {
@@ -54,7 +60,11 @@ namespace Digger.Services
             _log.LogInformation("Retrieved {numAnnotations} annotations matching the filter", annotations.Total);
 
             var mdTexts = _mdConverter.ConvertAnnotationCollection(annotations);
-            //var title = bmk.Title ?? DateTime.UtcNow.ToString();
+
+            foreach (var md in mdTexts)
+            {
+                await _writer.WriteFileSlugified(parameters.OutputPath, md.Title, md.Text);
+            }
 
             return mdTexts;
         }

@@ -8,6 +8,6 @@ namespace Digger.Infra.Markdown
 {
     public interface IHypothesisMarkdownConverter
     {
-        IEnumerable<string> ConvertAnnotationCollection(AnnotationsCollection annotations);
+        IEnumerable<MdTextResult> ConvertAnnotationCollection(AnnotationsCollection annotations);
     }
 }

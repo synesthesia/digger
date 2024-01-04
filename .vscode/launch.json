@@ -43,7 +43,7 @@
         "preLaunchTask": "build",
         // If you have changed target frameworks, make sure to update the program path.
         "program": "${workspaceFolder}/src/Digger/bin/Debug/net6.0/digger.dll",
-        "args": ["hypothesis", "-u", "https://www.synesthesia.co.uk/stream/working-around-problems-with-hypothes.is-bookmark/"],
+        "args": ["hypothesis", "-o","..\\..\\output","-u", "https://www.synesthesia.co.uk/stream/working-around-problems-with-hypothes.is-bookmark/"],
         "cwd": "${workspaceFolder}/src/Digger/",
         // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
         "console": "internalConsole",

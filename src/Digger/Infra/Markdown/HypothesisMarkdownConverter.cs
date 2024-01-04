@@ -15,9 +15,9 @@ namespace Digger.Infra.Markdown
             _logger = logger;
         }
 
-        public IEnumerable<string> ConvertAnnotationCollection(AnnotationsCollection annotations)
+        public IEnumerable<MdTextResult> ConvertAnnotationCollection(AnnotationsCollection annotations)
         {
-            var result = new List<string>();
+            var result = new List<MdTextResult>();
 
             if (annotations.Rows == null || !annotations.Rows.Any())
             {
@@ -72,7 +72,7 @@ namespace Digger.Infra.Markdown
 
                 var mdText = document.ToString();
 
-                result.Add(mdText);
+                result.Add(new MdTextResult(title, mdText));
             }
             return result;
 

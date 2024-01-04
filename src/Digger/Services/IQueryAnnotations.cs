@@ -1,10 +1,11 @@
 using Digger.Infra.Hypothesis.Models;
+using Digger.Infra.Markdown;
 using Digger.Model.Params;
 
 namespace Digger.Services
 {
     public interface IQueryAnnotations
     {
-        Task<IEnumerable<string>> SearchAnnotations(HypothesisExportParams hypothesisExportParams);
+        Task<IEnumerable<MdTextResult>> SearchAnnotations(HypothesisExportParams hypothesisExportParams);
     }
 }
