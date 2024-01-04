@@ -57,7 +57,8 @@ namespace Digger.Infra.Markdown
                         if (annotation.Text != null)
                         {
                             string mdContent = HtmlStringToMarkdown(annotation.Text);
-                            document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
+                            document.Root.Add(new MdParagraph(new MdRawMarkdownSpan(mdContent)));
+                            //document.Root.Add(new MdBlockQuote(new MdRawMarkdownSpan(mdContent)));
                         }
                         if (annotation.Tags == null)
                         {
