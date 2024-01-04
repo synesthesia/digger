@@ -1,6 +1,11 @@
 # Digger
 
-A tool to pull annotations from the Diigo social links platform and generate markdown files
+A tool to pull annotations from a variety of sources and  generate markdown files.
+
+Supported sources:
+
+- [Diigo](https://www.diigo.com/)
+- [Hypothes.is](https://hypothes.is/)
 
 ## Badges
 
@@ -39,8 +44,11 @@ Digger requires the following environment variables to be set:
 |DIIGO__APIKEY|Diigo API key|
 |DIIGO__USERNAME|Diigo Username|
 |DIIGO__PASSWORD|Diigo Password|
+|HYPOTHESIS__APITOKEN|Hypothesis API Token|
 
 ## Using
+
+### Diigo
 
 1. make sure that any Diigo entries you wish to process are tagged `#toprocess`
 2. run `digger diigo -o <relative path to my output directory`>
@@ -49,6 +57,13 @@ Digger requires the following environment variables to be set:
 5. edit the resulting files to your taste in the editor of your choosing
 6. that's it!
 
+### Hypothes.is
+
+1. run `digger hypothesis -o <relative path to my output directory> -u <url of source page>`
+2. a file will be created in the directory you nominated
+3. edit the resulting files to your taste in the editor of your choosing
+
+
 ## Building
 
 - clone this repo
@@ -56,7 +71,7 @@ Digger requires the following environment variables to be set:
 - install VS Code
 - open working copy
 - install all recommended extensions
-- install [Versionize](https://github.com/versionize/versio nize)
+- install [Versionize](https://github.com/versionize/versionize)
 - make changes on a branch
 - commit using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
