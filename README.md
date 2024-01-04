@@ -57,7 +57,7 @@ Digger requires the following environment variables to be set:
 - install VS Code
 - open working copy
 - install all recommended extensions
-- install [Versionize](https://github.com/versionize/versio nize)
+- install [Versionize](https://github.com/versionize/versionize)
 - make changes on a branch
 - commit using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 

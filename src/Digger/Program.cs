@@ -6,7 +6,7 @@ using Digger.Infra.Hypothesis.Configuration;
 using Digger.Infra.Markdown;
 using Digger.Model.Params;
 using Digger.Model.Verbs;
-using Digger.Services; 
+using Digger.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -47,13 +47,14 @@ namespace Digger
 
                     services.Configure<HypothesisOptions>(
                         configurationRoot.GetSection("Hypothesis"));
-                    
+
                     services.AddDiigoClient();
                     services.AddHypothesisClient();
                     services.AddSingleton<IFileSystem, FileSystem>();
                     services.AddSingleton<IWriteFiles, BookmarkFileWriter>();
                     services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
                     services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
+                    services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
                 });
 
                 _app = builder.Build();
@@ -71,9 +72,10 @@ namespace Digger
                 });
 
                 return await parser
-                    .ParseArguments<DiigoExportOptions, object>(args)
+                    .ParseArguments<DiigoExportOptions, HypothesisExportOptions, object>(args)
                     .MapResult(
                         (DiigoExportOptions opts) => RunDiigoExportAndReturnExitCode(opts),
+                        (HypothesisExportOptions opts) => RunHypothesisExportAndReturnExitCode(opts),
                         errors => Task.FromResult(1)
                     );
 
@@ -129,6 +131,27 @@ namespace Digger
             catch (Exception ex)
             {
                 _log.LogError(ex, "Error in retrieving bookmarks from Diigo");
+                return 1;
+            }
+        }
+
+        static async Task<int> RunHypothesisExportAndReturnExitCode(HypothesisExportOptions opts)
+        {
+             try
+            {
+                Guard.Against.Null(nameof(_app));
+
+                #pragma warning disable CS8602 // We've just checked that _app is not null!
+                var query = _app.Services.GetRequiredService<IQueryAnnotations>();
+                #pragma warning restore CS8602
+
+                var result = await query.SearchAnnotations(new HypothesisExportParams(opts));
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                _log.LogError(ex, "Error in retrieving annotations from Hypothesis");
                 return 1;
             }
 
