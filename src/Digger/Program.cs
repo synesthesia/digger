@@ -55,6 +55,7 @@ namespace Digger
                     services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
                     services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
                     services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
+                    services.AddSingleton<IHypothesisMarkdownConverter, HypothesisMarkdownConverter>();
                 });
 
                 _app = builder.Build();

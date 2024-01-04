@@ -5,6 +5,6 @@ namespace Digger.Services
 {
     public interface IQueryAnnotations
     {
-        Task<AnnotationsCollection> SearchAnnotations(HypothesisExportParams hypothesisExportParams);
+        Task<IEnumerable<string>> SearchAnnotations(HypothesisExportParams hypothesisExportParams);
     }
 }

@@ -2,6 +2,7 @@ using Ardalis.GuardClauses;
 using Digger.Infra.Hypothesis;
 using Digger.Infra.Hypothesis.Configuration;
 using Digger.Infra.Hypothesis.Models;
+using Digger.Infra.Markdown;
 using Digger.Model.Params;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -11,12 +12,14 @@ namespace Digger.Services
     public class ExportHypothesisAnnotations: IQueryAnnotations
     {
         private readonly IHypothesisClient _client;
+        private readonly IHypothesisMarkdownConverter _mdConverter;
         private readonly HypothesisOptions _settings;
         private ILogger<ExportHypothesisAnnotations> _log;
 
         public ExportHypothesisAnnotations(
             IHypothesisClient client,
             IOptions<HypothesisOptions> opts,
+            IHypothesisMarkdownConverter mdConverter,
             ILogger<ExportHypothesisAnnotations> log
             )
         {
@@ -29,10 +32,13 @@ namespace Digger.Services
             Guard.Against.Null(nameof(log));
             _log = log;
 
+            Guard.Against.Null(nameof(mdConverter));
+            _mdConverter = mdConverter;
+
 
         }
 
-        public async Task<AnnotationsCollection> SearchAnnotations(HypothesisExportParams parameters)
+        public async Task<IEnumerable<string>> SearchAnnotations(HypothesisExportParams parameters)
         {
             if (parameters.HypothesisSearchParameters == null)
             {
@@ -47,7 +53,10 @@ namespace Digger.Services
 
             _log.LogInformation("Retrieved {numAnnotations} annotations matching the filter", annotations.Total);
 
-            return annotations;
+            var mdTexts = _mdConverter.ConvertAnnotationCollection(annotations);
+            //var title = bmk.Title ?? DateTime.UtcNow.ToString();
+
+            return mdTexts;
         }
     }
 
