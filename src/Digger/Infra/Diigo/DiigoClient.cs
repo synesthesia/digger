@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Digger.Infra.Diigo.Exceptions;
-using Digger.Infra.Diigo.Helpers;
 using Digger.Infra.Diigo.Models;
+using Digger.Infra.Helpers;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using static Digger.Infra.Diigo.ApiEndPoints;
