@@ -26,10 +26,10 @@ namespace Digger.Services
             ILogger<ExportHypothesisAnnotations> log
             )
         {
-            _ = Guard.Against.Null(nameof(client));
+            Guard.Against.Null(nameof(client));
             _client = client;
 
-            _ = Guard.Against.Null(nameof(opts));
+            Guard.Against.Null(nameof(opts));
             _settings = opts.Value;
 
             Guard.Against.Null(nameof(log));
@@ -69,5 +69,4 @@ namespace Digger.Services
             return mdTexts;
         }
     }
-
 }

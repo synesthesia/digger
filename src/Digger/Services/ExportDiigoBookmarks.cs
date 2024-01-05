@@ -19,7 +19,6 @@ namespace Digger.Services
     {
         private DiigoOptions _settings;
         private readonly IDiigoClient _client;
-
         private ILogger<ExportDiigoBookmarks> _log;
         private IMarkdownNoteConverter _mdConverter;
         private readonly IWriteFiles _writer;
@@ -80,12 +79,8 @@ namespace Digger.Services
             return result;
 
         }
-
-
-
         private async Task<SaveBookmarkResponse?> MarkBookmarkAsProcessed(BookmarkItem bmk, string inputTag, string outputTag)
         {
-
             bmk.RemoveTag(inputTag);
             bmk.AddTag(outputTag);
 
@@ -102,16 +97,13 @@ namespace Digger.Services
 
             var saveResult = await _client.SaveBookmark(toUpdate);
 
-            if (saveResult != null)
+            if (saveResult is not null)
             {
                 _log.LogInformation("Marked bookmark as processed in Diigo - {url}", bmk.Url);
 
             }
 
             return saveResult;
-
         }
-
-
     }
 }
