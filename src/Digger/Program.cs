@@ -66,6 +66,8 @@ namespace Digger
                     with.IgnoreUnknownArguments = true;
                 });
 
+                // tell the parser what command line options to expect
+                // map the given arguments to the correct action method
                 return await parser
                     .ParseArguments<DiigoExportOptions, HypothesisExportOptions, object>(args)
                     .MapResult(
@@ -83,7 +85,12 @@ namespace Digger
             }
         }
 
-        static async  Task<int> RunDiigoExportAndReturnExitCode(DiigoExportOptions options)
+        /// <summary>
+        /// Runs the Diigo export and returns the exit code.
+        /// </summary>
+        /// <param name="options">The Diigo export options.</param>
+        /// <returns>The exit code.</returns>
+        private static async  Task<int> RunDiigoExportAndReturnExitCode(DiigoExportOptions options)
         {
             try
             {
@@ -105,7 +112,12 @@ namespace Digger
             }
         }
 
-        static async Task<int> RunHypothesisExportAndReturnExitCode(HypothesisExportOptions opts)
+        /// <summary>
+        /// Runs the hypothesis export and returns the exit code.
+        /// </summary>
+        /// <param name="opts">The hypothesis export options.</param>
+        /// <returns>The exit code.</returns>
+        private static async Task<int> RunHypothesisExportAndReturnExitCode(HypothesisExportOptions opts)
         {
              try
             {
