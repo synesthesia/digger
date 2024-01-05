@@ -20,12 +20,12 @@ namespace Digger.Services
         private DiigoOptions _settings;
         private readonly IDiigoClient _client;
         private ILogger<ExportDiigoBookmarks> _log;
-        private IMarkdownNoteConverter _mdConverter;
+        private IDiigoMarkdownNoteConverter _mdConverter;
         private readonly IWriteFiles _writer;
 
         public ExportDiigoBookmarks(
             IDiigoClient client,
-            IMarkdownNoteConverter mdConverter,
+            IDiigoMarkdownNoteConverter mdConverter,
             IOptions<DiigoOptions> opts,
             IWriteFiles writer,
             ILogger<ExportDiigoBookmarks> log)

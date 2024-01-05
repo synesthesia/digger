@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Digger.Infra.Markdown
 {
-    public class DiigoMarkdownConverter : IMarkdownNoteConverter
+    public class DiigoMarkdownConverter : IDiigoMarkdownNoteConverter
     {
         private readonly ILogger<DiigoMarkdownConverter> logger;
 

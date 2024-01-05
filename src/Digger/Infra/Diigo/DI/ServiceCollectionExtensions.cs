@@ -38,8 +38,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
 
              services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
-             
-             services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
+
+             services.AddSingleton<IDiigoMarkdownNoteConverter, DiigoMarkdownConverter>();
 
             return services;
         }

@@ -7,7 +7,7 @@ namespace Digger.Tests.Infra.Markdown
     public class DiigoMarkdownConverterTests
     {
         ITestOutputHelper _output;
-        IMarkdownNoteConverter _sut;
+        IDiigoMarkdownNoteConverter _sut;
 
         ILogger<DiigoMarkdownConverter> _logger;
 
