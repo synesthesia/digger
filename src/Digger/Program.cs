@@ -3,7 +3,6 @@ using CommandLine;
 using Digger.Infra.Diigo.Configuration;
 using Digger.Infra.Files;
 using Digger.Infra.Hypothesis.Configuration;
-using Digger.Infra.Markdown;
 using Digger.Model.Params;
 using Digger.Model.Verbs;
 using Digger.Services;
@@ -38,7 +37,6 @@ namespace Digger
 
 
                 builder.ConfigureServices((ctx, services) =>
-
                 {
                     var configurationRoot = ctx.Configuration;
 
@@ -49,11 +47,12 @@ namespace Digger
                         configurationRoot.GetSection("Hypothesis"));
 
                     services.UseDiigo();
-                    services.AddHypothesisClient();
+
+                    services.UseHypothesis();
+
                     services.AddSingleton<IFileSystem, FileSystem>();
+
                     services.AddSingleton<IWriteFiles, BookmarkFileWriter>();
-                    services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
-                    services.AddSingleton<IHypothesisMarkdownConverter, HypothesisMarkdownConverter>();
                 });
 
                 _app = builder.Build();
