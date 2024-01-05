@@ -3,12 +3,14 @@ using Digger.Infra.Diigo;
 using Digger.Infra.Diigo.Configuration;
 using System.Net;
 using Microsoft.Extensions.Options;
+using Digger.Services;
+using Digger.Infra.Markdown;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDiigoClient(this IServiceCollection services)
+        public static IServiceCollection UseDiigo(this IServiceCollection services)
         {
             var sp = services.BuildServiceProvider();
             var options = sp.GetRequiredService<IOptions<DiigoOptions>>().Value;
@@ -33,6 +35,11 @@ namespace Microsoft.Extensions.DependencyInjection
                     Credentials = new NetworkCredential(userName, password),
                 };
             });
+
+
+             services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
+             
+             services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
 
             return services;
         }

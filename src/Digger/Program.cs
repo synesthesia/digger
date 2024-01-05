@@ -48,12 +48,10 @@ namespace Digger
                     services.Configure<HypothesisOptions>(
                         configurationRoot.GetSection("Hypothesis"));
 
-                    services.AddDiigoClient();
+                    services.UseDiigo();
                     services.AddHypothesisClient();
                     services.AddSingleton<IFileSystem, FileSystem>();
                     services.AddSingleton<IWriteFiles, BookmarkFileWriter>();
-                    services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
-                    services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
                     services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
                     services.AddSingleton<IHypothesisMarkdownConverter, HypothesisMarkdownConverter>();
                 });
