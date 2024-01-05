@@ -9,6 +9,11 @@
     "csharpextensions.privateMemberPrefix": "_",
     "csharpextensions.useFileScopedNamespace": true,
     "csharp-snippet-productivity.defaultFolderForProjectCreation": "src",
+    "cSpell.words": [
+      "Ardalis",
+      "Diigo",
+      "Newtonsoft"
+    ],
 
 
 }
