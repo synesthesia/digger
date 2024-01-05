@@ -3,7 +3,6 @@ using CommandLine;
 using Digger.Infra.Diigo.Configuration;
 using Digger.Infra.Files;
 using Digger.Infra.Hypothesis.Configuration;
-using Digger.Infra.Markdown;
 using Digger.Model.Params;
 using Digger.Model.Verbs;
 using Digger.Services;
@@ -18,8 +17,8 @@ namespace Digger
 {
     internal class Program
     {
-        static IHost? _app;
-        static ILogger<Program> _log = NullLogger<Program>.Instance;
+        private static IHost? _app;
+        private static ILogger<Program> _log = NullLogger<Program>.Instance;
 
         public static async Task<int> Main(string[] args)
         {
@@ -38,7 +37,6 @@ namespace Digger
 
 
                 builder.ConfigureServices((ctx, services) =>
-
                 {
                     var configurationRoot = ctx.Configuration;
 
@@ -48,23 +46,19 @@ namespace Digger
                     services.Configure<HypothesisOptions>(
                         configurationRoot.GetSection("Hypothesis"));
 
-                    services.AddDiigoClient();
-                    services.AddHypothesisClient();
+                    services.UseDiigo();
+
+                    services.UseHypothesis();
+
                     services.AddSingleton<IFileSystem, FileSystem>();
+
                     services.AddSingleton<IWriteFiles, BookmarkFileWriter>();
-                    services.AddSingleton<IQueryBookmarks, ExportDiigoBookmarks>();
-                    services.AddSingleton<IMarkdownNoteConverter, DiigoMarkdownConverter>();
-                    services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
-                    services.AddSingleton<IHypothesisMarkdownConverter, HypothesisMarkdownConverter>();
                 });
 
                 _app = builder.Build();
 
                 _log = _app.Services.GetRequiredService<ILogger<Program>>();
 
-                //var verbs = LoadVerbs();
-                //var parser = Parser.Default;
-                //var parser = new CommandLine.Parser(with => with.HelpWriter = null);
                 var parser = new Parser(with =>
                 {
                     with.CaseSensitive = false;
@@ -72,6 +66,8 @@ namespace Digger
                     with.IgnoreUnknownArguments = true;
                 });
 
+                // tell the parser what command line options to expect
+                // map the given arguments to the correct action method
                 return await parser
                     .ParseArguments<DiigoExportOptions, HypothesisExportOptions, object>(args)
                     .MapResult(
@@ -79,43 +75,22 @@ namespace Digger
                         (HypothesisExportOptions opts) => RunHypothesisExportAndReturnExitCode(opts),
                         errors => Task.FromResult(1)
                     );
-
-                    /*
-                return await parser.ParseArguments(args, verbs)
-                    .WithParsed(Run)
-                    .WithNotParsed(DisplayHelp);
-                    */
-
             }
             catch (Exception ex)
             {
                 var msg = $"Unhandled exception: {ex.Message}";
                 _log.LogCritical(msg);
+
                 return 1;
             }
         }
 
-        /*
-        //load all types using Reflection
-        private	static Type[] LoadVerbs()
-        {
-        return Assembly.GetExecutingAssembly().GetTypes()
-            .Where(t => t.GetCustomAttribute<VerbAttribute>() != null).ToArray();
-        }
-
-        private static async Task<int> Run(object obj)
-        {
-            switch (obj)
-            {
-                case DiigoExportOptions d:
-                    return await RunDiigoExportAndReturnExitCode(d);
-                default:
-                    return 1;
-            }
-        }
-        */
-
-        static async  Task<int> RunDiigoExportAndReturnExitCode(DiigoExportOptions options)
+        /// <summary>
+        /// Runs the Diigo export and returns the exit code.
+        /// </summary>
+        /// <param name="options">The Diigo export options.</param>
+        /// <returns>The exit code.</returns>
+        private static async  Task<int> RunDiigoExportAndReturnExitCode(DiigoExportOptions options)
         {
             try
             {
@@ -132,11 +107,17 @@ namespace Digger
             catch (Exception ex)
             {
                 _log.LogError(ex, "Error in retrieving bookmarks from Diigo");
+
                 return 1;
             }
         }
 
-        static async Task<int> RunHypothesisExportAndReturnExitCode(HypothesisExportOptions opts)
+        /// <summary>
+        /// Runs the hypothesis export and returns the exit code.
+        /// </summary>
+        /// <param name="opts">The hypothesis export options.</param>
+        /// <returns>The exit code.</returns>
+        private static async Task<int> RunHypothesisExportAndReturnExitCode(HypothesisExportOptions opts)
         {
              try
             {
@@ -153,36 +134,9 @@ namespace Digger
             catch (Exception ex)
             {
                 _log.LogError(ex, "Error in retrieving annotations from Hypothesis");
+
                 return 1;
             }
-
         }
-
-        /*
-        static Task<int> DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errs)
-        {
-            HelpText helpText = null;
-            if (errs.IsVersion())  //check if error is version request
-                helpText = HelpText.AutoBuild(result);
-                return Task.FromResult(1);
-            else
-            {
-                var name = Assembly.GetEntryAssembly()?.GetName()?.ToString();
-                var version = Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
-                helpText = HelpText.AutoBuild(result, h =>
-                {
-                    //configure help
-                    h.AdditionalNewLineAfterOption = false;
-                    h.Heading = $"{name ?? "Digger"} {version}";
-                    h.Copyright = "Copyright (c) 2022 Julian Elve";
-                    return HelpText.DefaultParsingErrorsHandler(result, h);
-                },
-                e => e,
-                verbsIndex:true );
-            }
-            Console.WriteLine(helpText);
-            return Task.FromResult(1);
-        }
-        */
     }
 }

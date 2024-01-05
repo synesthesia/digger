@@ -6,6 +6,14 @@
     "editor.formatOnType": true,
     "diffEditor.codeLens": true,
     "editor.formatOnSave": false,
+    "csharpextensions.privateMemberPrefix": "_",
+    "csharpextensions.useFileScopedNamespace": true,
+    "csharp-snippet-productivity.defaultFolderForProjectCreation": "src",
+    "cSpell.words": [
+      "Ardalis",
+      "Diigo",
+      "Newtonsoft"
+    ],
 
 
 }

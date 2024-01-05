@@ -1,14 +1,15 @@
 using Ardalis.GuardClauses;
-using System.Net;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Headers;
+using Digger.Services;
+using Digger.Infra.Markdown;
 
 namespace Digger.Infra.Hypothesis.Configuration
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddHypothesisClient(this IServiceCollection services)
+        public static IServiceCollection UseHypothesis(this IServiceCollection services)
         {
             var sp = services.BuildServiceProvider();
             var options = sp.GetRequiredService<IOptions<HypothesisOptions>>().Value;
@@ -21,8 +22,12 @@ namespace Digger.Infra.Hypothesis.Configuration
                 c.BaseAddress = new Uri(Constants.BASE_URL);
                 c.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiToken);
                 return new HypothesisClient(c);
-                
+
             });
+
+            services.AddSingleton<IQueryAnnotations,  ExportHypothesisAnnotations>();
+
+            services.AddSingleton<IHypothesisMarkdownConverter, HypothesisMarkdownConverter>();
 
             return services;
         }
